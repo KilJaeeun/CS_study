@@ -3,8 +3,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.kohsuke.github.*;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,6 +20,8 @@ public class CheckIssueReplyUser {
     static final String my_personal_token = "TOKEN PRIVATE";
     static final String targetUrl = "https://api.github.com/repos/KilJaeeun/CS_study/contents/README.md";
     static final String repoName = "KilJaeeun/CS_study";
+    static final String USER_AGENT = "Mozilla/5.0";
+
     static final int start = 15;
     static final int end = 22;
 
@@ -99,8 +99,8 @@ public class CheckIssueReplyUser {
             readmeString += "|" + charge;
             readmeString += "|\n";
         }
-        if (!sendGet().isEmpty()) {
-            String sha = sendGet();
+        if (!getREADMEsha().isEmpty()) {
+            String sha = getREADMEsha();
             GHContent readme = ghRepository.getReadme();
             GHContentBuilder ghContentBuilder = ghRepository.createContent();
             ghContentBuilder.sha(sha);
@@ -117,17 +117,14 @@ public class CheckIssueReplyUser {
     }
 
     // HTTP GET request
-    private static String sendGet() {
+    private static String getREADMEsha() {
         try {
             String answer = "";
             URL url = new URL(targetUrl);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
-            String USER_AGENT = "Mozilla/5.0";
-
             con.setRequestProperty("User-Agent", USER_AGENT);
             con.setRequestProperty("Authorization", "token" + my_personal_token);
-            int responseCode = con.getResponseCode();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
             StringBuffer response = new StringBuffer();
@@ -135,12 +132,9 @@ public class CheckIssueReplyUser {
                 response.append(inputLine);
             }
             in.close();
-            // scriptengin을 이용하여 Json 파싱하기
-            ScriptEngineManager sem = new ScriptEngineManager();
-            ScriptEngine engine = sem.getEngineByName("javascript");
+            //  Json 파싱해서 sha 받아오기
             JSONParser jsonParser1 = new JSONParser();
-            JSONObject jsonObject1;
-            jsonObject1 = (JSONObject) jsonParser1.parse(response.toString());
+            JSONObject jsonObject1 = (JSONObject) jsonParser1.parse(response.toString());
             return (String) jsonObject1.get("sha");
         } catch (ProtocolException e) {
             e.printStackTrace();
