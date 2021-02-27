@@ -9,8 +9,15 @@ https://docs.google.com/spreadsheets/d/1kqbR59STucS3d9-A71N9q4aUeUeeR28bimKIsYOb
 |참여자명 |2021. 2. 1.|2021. 2. 5.|2021. 2. 8.|2021. 2. 15.|2021. 2. 19.|2021. 2. 22.|2021. 2. 26.|벌금|
 |---|---|---|---|---|---|---|---|---|
 lin9703|✅|✅|✅|✅|✅|✅|✅|0|
-LeeSeoYoung012|✅|✅|✅|  |✅|✅|  |10000|
-KilJaeeun|✅|✅|✅|✅|✅|✅|✅|0|
-Juhee-Jeong-SW|✅|  |  |  |  |  |  |30000|
-Haeseong5|✅|✅|✅|✅|✅|  |  |10000|
-lys8325|✅|✅|✅|✅|✅|✅|✅|0|
+
+ successLeeSeoYoung012|✅|✅|✅|  |✅|✅|  |10000|
+
+ successKilJaeeun|✅|✅|✅|✅|✅|✅|✅|0|
+
+ successJuhee-Jeong-SW|✅|  |  |  |  |  |  |30000|
+
+ successHaeseong5|✅|✅|✅|✅|✅|  |  |10000|
+
+ successlys8325|✅|✅|✅|✅|✅|✅|✅|0|
+
+ success
